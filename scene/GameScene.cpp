@@ -2,7 +2,9 @@
 #include "TextureManager.h"
 #include <cassert>
 
-GameScene::GameScene() {}
+GameScene::GameScene() {
+	delete sprite_;
+}
 
 GameScene::~GameScene() {}
 
@@ -11,6 +13,9 @@ void GameScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
 	audio_ = Audio::GetInstance();
+
+	textureHandle_ = TextureManager::Load("inshipPlayer_front_1.png");
+	sprite_ = Sprite::Create(textureHandle_, {100, 50});
 }
 
 void GameScene::Update() {}
@@ -27,6 +32,7 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに背景スプライトの描画処理を追加できる
 	/// </summary>
+	sprite_->Draw();
 
 	// スプライト描画後処理
 	Sprite::PostDraw();
