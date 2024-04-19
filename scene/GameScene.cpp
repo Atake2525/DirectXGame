@@ -8,7 +8,7 @@
 
 GameScene::GameScene() {}
 
-
+//デストラクタ
 GameScene::~GameScene() {
 	delete sprite_;
 	delete model_;
